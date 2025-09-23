@@ -20,6 +20,15 @@ export const PhoneSchema = StrictObject({
   inStock: Type.Boolean(),
 });
 
+export const PhoneParamsSchema = Type.Object({
+  id: Type.String({
+    pattern: '^[0-9]+$',
+    minLength: 1,
+    maxLength: 10,
+    description: 'Phone ID must be a numeric string'
+  })
+});
+
 export const PaginationQuerySchema = StrictObject({
   page: Type.Optional(Type.String({ default: '1' })),
   limit: Type.Optional(Type.String({ default: '10' })),
@@ -53,6 +62,7 @@ export const PaginatedPhonesResponseSchema = StrictObject({
 
 export type Phone = Static<typeof PhoneSchema>;
 export type PhoneSpecs = Static<typeof PhoneSpecsSchema>;
+export type PhoneParams = Static<typeof PhoneParamsSchema>;
 export type PaginationQuery = Static<typeof PaginationQuerySchema>;
 export type PaginationResponse = Static<typeof PaginationResponseSchema>;
 export type PaginatedPhonesResponse = Static<typeof PaginatedPhonesResponseSchema>;

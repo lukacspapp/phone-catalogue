@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "price": 1199,
+    "description": "The ultimate iPhone with titanium design, A17 Pro chip, and the most advanced camera system ever in iPhone.",
+    "specs": {
+      "display": "6.7-inch Super Retina XDR OLED",
+      "storage": "256GB",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto",
+      "battery": "Up to 29 hours video playback"
+    },
+    "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "price": 1299,
+    "description": "Galaxy AI is here. The most powerful Galaxy smartphone with S Pen built-in and incredible zoom capabilities.",
+    "specs": {
+      "display": "6.8-inch Dynamic AMOLED 2X 120Hz",
+      "storage": "512GB",
+      "camera": "200MP Main + 50MP Periscope + 12MP Ultra Wide + 10MP Telephoto",
+      "battery": "5000mAh with 45W fast charging"
+    },
+    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 3,
+    "name": "Google Pixel 8 Pro",
+    "brand": "Google",
+    "price": 999,
+    "description": "The most helpful phone with Google AI built right in. Magic Eraser, Real Tone, and incredible computational photography.",
+    "specs": {
+      "display": "6.7-inch LTPO OLED 120Hz",
+      "storage": "128GB",
+      "camera": "50MP Main + 48MP Ultra Wide + 48MP Telephoto with 5x zoom",
+      "battery": "5050mAh with wireless charging"
+    },
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop",
+    "inStock": false
+  },
+  {
+    "id": 4,
+    "name": "OnePlus 12",
+    "brand": "OnePlus",
+    "price": 799,
+    "description": "Never Settle. Flagship performance with Snapdragon 8 Gen 3, blazing fast charging, and premium build quality.",
+    "specs": {
+      "display": "6.82-inch LTPO AMOLED 120Hz",
+      "storage": "256GB",
+      "camera": "50MP Main + 64MP Periscope + 48MP Ultra Wide",
+      "battery": "5400mAh with 100W SuperVOOC charging"
+    },
+    "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 5,
+    "name": "Xiaomi 14 Ultra",
+    "brand": "Xiaomi",
+    "price": 1399,
+    "description": "Unleash your photography passion with Leica cameras, premium materials, and flagship performance.",
+    "specs": {
+      "display": "6.73-inch LTPO AMOLED 120Hz",
+      "storage": "512GB",
+      "camera": "50MP Main + 50MP Ultra Wide + 50MP Periscope + 50MP Telephoto",
+      "battery": "5300mAh with 90W HyperCharge"
+    },
+    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 6,
+    "name": "iPhone 14",
+    "brand": "Apple",
+    "price": 699,
+    "description": "iPhone 14. With the most impressive dual-camera system on iPhone. Capture incredible photos in all kinds of light.",
+    "specs": {
+      "display": "6.1-inch Super Retina XDR OLED",
+      "storage": "128GB",
+      "camera": "12MP Main + 12MP Ultra Wide",
+      "battery": "Up to 20 hours video playback"
+    },
+    "image": "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 7,
+    "name": "Samsung Galaxy A54 5G",
+    "brand": "Samsung",
+    "price": 449,
+    "description": "Awesome all-around. Enhanced triple camera with OIS, vibrant display, and long-lasting battery performance.",
+    "specs": {
+      "display": "6.4-inch Super AMOLED 120Hz",
+      "storage": "128GB",
+      "camera": "50MP Main + 12MP Ultra Wide + 5MP Macro",
+      "battery": "5000mAh with 25W fast charging"
+    },
+    "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 8,
+    "name": "Nothing Phone (2)",
+    "brand": "Nothing",
+    "price": 599,
+    "description": "Pure instinct. Glyph Interface, transparent design, and flagship performance that stands out from the crowd.",
+    "specs": {
+      "display": "6.7-inch LTPO OLED 120Hz",
+      "storage": "256GB",
+      "camera": "50MP Main + 50MP Ultra Wide",
+      "battery": "4700mAh with 45W fast charging"
+    },
+    "image": "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500&h=500&fit=crop",
+    "inStock": false
+  },
+  {
+    "id": 9,
+    "name": "Motorola Edge 40 Pro",
+    "brand": "Motorola",
+    "price": 899,
+    "description": "Unleash brilliant. Premium curved display, wireless charging, and capture life's moments in stunning detail.",
+    "specs": {
+      "display": "6.67-inch pOLED 165Hz curved",
+      "storage": "256GB",
+      "camera": "50MP Main + 50MP Ultra Wide + 12MP Telephoto",
+      "battery": "4600mAh with 125W TurboPower charging"
+    },
+    "image": "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 10,
+    "name": "Oppo Find X6 Pro",
+    "brand": "Oppo",
+    "price": 1199,
+    "description": "Find the extraordinary. Hasselblad camera system, premium design, and flagship performance in every detail.",
+    "specs": {
+      "display": "6.82-inch LTPO AMOLED 120Hz",
+      "storage": "256GB",
+      "camera": "50MP Main + 50MP Ultra Wide + 50MP Periscope",
+      "battery": "5000mAh with 100W SuperVOOC charging"
+    },
+    "image": "https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 11,
+    "name": "Realme GT 5 Pro",
+    "brand": "Realme",
+    "price": 649,
+    "description": "Dare to leap. Flagship performance, advanced camera system, and premium design at an incredible value.",
+    "specs": {
+      "display": "6.78-inch LTPO OLED 144Hz",
+      "storage": "256GB",
+      "camera": "50MP Main + 8MP Ultra Wide + 50MP Periscope",
+      "battery": "5400mAh with 100W fast charging"
+    },
+    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 12,
+    "name": "Asus ROG Phone 8 Pro",
+    "brand": "Asus",
+    "price": 1199,
+    "description": "For those who dare. Ultimate gaming performance, RGB lighting, and desktop-class cooling in a smartphone.",
+    "specs": {
+      "display": "6.78-inch AMOLED 165Hz gaming",
+      "storage": "512GB",
+      "camera": "50MP Main + 13MP Ultra Wide + 5MP Macro",
+      "battery": "6000mAh with 65W HyperCharge"
+    },
+    "image": "https://images.unsplash.com/photo-1567721913486-6585f069b332?w=500&h=500&fit=crop",
+    "inStock": false
+  },
+  {
+    "id": 13,
+    "name": "Vivo X100 Pro",
+    "brand": "Vivo",
+    "price": 999,
+    "description": "Professional photography redefined. Zeiss optics, flagship performance, and elegant design come together perfectly.",
+    "specs": {
+      "display": "6.78-inch LTPO AMOLED 120Hz",
+      "storage": "256GB",
+      "camera": "50MP Main + 50MP Ultra Wide + 50MP Periscope with Zeiss",
+      "battery": "5400mAh with 100W fast charging"
+    },
+    "image": "https://images.unsplash.com/photo-1686904423955-b31d96cf91ea?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 14,
+    "name": "Honor Magic6 Pro",
+    "brand": "Honor",
+    "price": 1099,
+    "description": "Beyond boundaries. AI-powered photography, premium build quality, and flagship performance in a stunning design.",
+    "specs": {
+      "display": "6.8-inch LTPO OLED 120Hz curved",
+      "storage": "512GB",
+      "camera": "50MP Main + 50MP Ultra Wide + 180MP Periscope",
+      "battery": "5600mAh with 80W SuperCharge"
+    },
+    "image": "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500&h=500&fit=crop",
+    "inStock": true
+  },
+  {
+    "id": 15,
+    "name": "Sony Xperia 1 VI",
+    "brand": "Sony",
+    "price": 1399,
+    "description": "Professional creativity. 4K OLED display, Alpha camera technology, and audiophile-grade sound for creators.",
+    "specs": {
+      "display": "6.5-inch 4K OLED 120Hz CinemaWide",
+      "storage": "256GB",
+      "camera": "48MP Triple camera with Alpha technology",
+      "battery": "5000mAh with wireless charging"
+    },
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop",
+    "inStock": false
+  }
+]
