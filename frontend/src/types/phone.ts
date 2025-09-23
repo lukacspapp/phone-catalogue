@@ -42,8 +42,20 @@ export const PhoneFiltersSchema = z.object({
   limit: z.number().optional(),
 });
 
+export const ApiResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
+  z.object({
+    success: z.boolean(),
+    data: dataSchema,
+    timestamp: z.string(),
+  });
+
 export type Phone = z.infer<typeof PhoneSchema>;
 export type PhoneSpecs = z.infer<typeof PhoneSpecsSchema>;
 export type Pagination = z.infer<typeof PaginationSchema>;
 export type PaginatedResponse = z.infer<typeof PaginatedResponseSchema>;
 export type PhoneFilters = z.infer<typeof PhoneFiltersSchema>;
+export type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+  timestamp: string;
+};
