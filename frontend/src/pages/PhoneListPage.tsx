@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { usePhones } from '@/hooks/usePhones';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { formatPrice, truncateText } from '@/lib/utils';
 import type { PhoneFilters } from '@/types/phone';
 import { PaginationComponent } from '../components/pagination-component';
+import { PhoneCard } from '../components/phone-card';
 
 export function PhoneListPage() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Get current page from URL or default to 1
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
   const [filters, setFilters] = useState<PhoneFilters>({
@@ -84,36 +80,7 @@ export function PhoneListPage() {
         <>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-8">
             {data?.data.map((phone) => (
-              <Card key={phone.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-lg line-clamp-2">{phone.name}</CardTitle>
-                    <Badge variant={phone.inStock ? "default" : "secondary"}>
-                      {phone.inStock ? "In Stock" : "Out of Stock"}
-                    </Badge>
-                  </div>
-                  <p className="text-muted-foreground">{phone.brand}</p>
-                </CardHeader>
-                <CardContent>
-                  <div className="aspect-square overflow-hidden rounded-md mb-4">
-                    <img
-                      src={phone.image}
-                      alt={phone.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform"
-                    />
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {truncateText(phone.description, 100)}
-                  </p>
-                  <p className="font-bold text-xl mb-4">{formatPrice(phone.price)}</p>
-                  <Button
-                    className="w-full"
-                    onClick={() => navigate(`/phone/${phone.id}`)}
-                  >
-                    View Details
-                  </Button>
-                </CardContent>
-              </Card>
+              <PhoneCard key={phone.id} phone={phone} />
             ))}
           </div>
 
