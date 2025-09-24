@@ -1,6 +1,7 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 import { phoneApi } from '@/lib/api';
 import type { PhoneFilters, PaginatedResponse, Phone } from '@/types/phone';
+import { cacheConfig } from '../config/cache';
 
 export const usePhones = (
   filters: PhoneFilters = {},
@@ -9,7 +10,7 @@ export const usePhones = (
   return useQuery({
     queryKey: ['phones', filters],
     queryFn: () => phoneApi.getPhones(filters),
-    staleTime: 5 * 60 * 1000,
+    ...cacheConfig.phoneList,
     ...options,
   });
 };
@@ -22,7 +23,7 @@ export const usePhone = (
     queryKey: ['phone', id],
     queryFn: () => phoneApi.getPhone(id),
     enabled: !!id,
-    staleTime: 10 * 60 * 1000,
+    ...cacheConfig.phoneDetails,
     ...options,
   });
 };

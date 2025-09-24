@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const PhoneSpecsSchema = z.object({
+const PhoneSpecsSchema = z.object({
   display: z.string(),
   storage: z.string(),
   camera: z.string(),
@@ -18,7 +18,7 @@ export const PhoneSchema = z.object({
   inStock: z.boolean(),
 });
 
-export const PaginationSchema = z.object({
+const PaginationSchema = z.object({
   currentPage: z.number(),
   totalPages: z.number(),
   totalItems: z.number(),

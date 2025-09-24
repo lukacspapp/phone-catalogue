@@ -8,6 +8,7 @@ export const getPhones = async (req: Request, res: Response, next: NextFunction)
     const query = req.query as PaginationQuery;
     const result = phoneService.getFilteredPhones(query);
 
+    await new Promise(resolve => setTimeout(resolve, 3000));
     const response = createApiResponse(result);
     res.json(response);
   } catch (error) {
@@ -32,6 +33,7 @@ export const getPhoneById = async (req: Request, res: Response, next: NextFuncti
       return res.status(404).json(response);
     }
 
+    await new Promise(resolve => setTimeout(resolve, 3000));
     const response = createApiResponse(phone);
     res.json(response);
   } catch (error) {

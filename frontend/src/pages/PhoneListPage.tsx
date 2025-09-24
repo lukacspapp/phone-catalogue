@@ -1,44 +1,44 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { usePhones } from '@/hooks/usePhones';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useState } from 'react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { usePhones } from '@/hooks/usePhones';
 import type { PhoneFilters } from '@/types/phone';
-import { PaginationComponent } from '../components/pagination-component';
-import { PhoneCard } from '../components/phone-card';
+import { FilterSidebar } from '../components/phone-list/filter-sidebar';
+import { MainContent } from '../components/phone-list/main-content';
+import { PageHeader } from '../components/phone-list/page-header';
 
 export function PhoneListPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [filterCriteria, setFilterCriteria] = useState<Omit<PhoneFilters, 'page' | 'limit'>>({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(12);
 
-  const currentPage = parseInt(searchParams.get('page') || '1', 10);
-
-  const [filters, setFilters] = useState<PhoneFilters>({
+  const filters: PhoneFilters = {
+    ...filterCriteria,
     page: currentPage,
-    limit: 12,
-  });
+    limit: pageSize,
+  };
 
-  const { data, isLoading, error } = usePhones(filters);
+  const { data, isLoading, error, isFetching } = usePhones(filters);
 
-  useEffect(() => {
-    setFilters(prev => ({ ...prev, page: currentPage }));
-  }, [currentPage]);
+  const handleFiltersChange = (newFilters: Omit<PhoneFilters, 'page' | 'limit'>) => {
+    setFilterCriteria(newFilters);
+    setCurrentPage(1);
+  };
 
   const handlePageChange = (page: number) => {
-    const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.set('page', page.toString());
-    setSearchParams(newSearchParams);
-
+    setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleResetFilters = () => {
+    setFilterCriteria({});
+    setCurrentPage(1);
   };
 
   if (error) {
     return (
       <div className="container mx-auto p-8">
         <Alert variant="destructive">
-          <AlertDescription>
-            Error loading phones: {error.message}
-          </AlertDescription>
+          <AlertDescription>Error: {error.message}</AlertDescription>
         </Alert>
       </div>
     );
@@ -46,63 +46,25 @@ export function PhoneListPage() {
 
   return (
     <div className="container mx-auto p-8">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Available Phones</h2>
-        {data && (
-          <p className="text-muted-foreground">
-            Showing {((data.pagination.currentPage - 1) * data.pagination.itemsPerPage) + 1} to {Math.min(data.pagination.currentPage * data.pagination.itemsPerPage, data.pagination.totalItems)} of {data.pagination.totalItems} phones
-            {data.pagination.totalPages > 1 && (
-              <span className="ml-2">
-                • Page {data.pagination.currentPage} of {data.pagination.totalPages}
-              </span>
-            )}
-          </p>
-        )}
+      <PageHeader />
+
+      <div className="grid lg:grid-cols-4 gap-8">
+        <FilterSidebar
+          filters={filterCriteria}
+          onFiltersChange={handleFiltersChange}
+          onReset={handleResetFilters}
+          totalResults={data?.pagination.totalItems}
+        />
+
+        <MainContent
+          data={data}
+          isLoading={isLoading}
+          isFetching={isFetching}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
-
-      {isLoading ? (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <Card key={i}>
-              <CardHeader>
-                <Skeleton className="h-6 w-3/4" />
-                <Skeleton className="h-4 w-1/2" />
-              </CardHeader>
-              <CardContent>
-                <Skeleton className="w-full h-48 mb-4" />
-                <Skeleton className="h-6 w-1/3 mb-4" />
-                <Skeleton className="h-10 w-full" />
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      ) : (
-        <>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-8">
-            {data?.data.map((phone) => (
-              <PhoneCard key={phone.id} phone={phone} />
-            ))}
-          </div>
-
-          {data && data.pagination.totalPages > 1 && (
-            <div className="mt-8">
-              <PaginationComponent
-                currentPage={data.pagination.currentPage}
-                totalPages={data.pagination.totalPages}
-                hasNext={data.pagination.hasNext}
-                hasPrevious={data.pagination.hasPrevious}
-                onPageChange={handlePageChange}
-              />
-            </div>
-          )}
-        </>
-      )}
-
-      {data && data.data.length === 0 && !isLoading && (
-        <div className="text-center py-12">
-          <p className="text-lg text-muted-foreground">No phones found</p>
-        </div>
-      )}
     </div>
   );
 }
