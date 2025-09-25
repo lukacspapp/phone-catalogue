@@ -11,7 +11,7 @@ interface PhoneInfoProps {
 export function PhoneInfo({ phone }: PhoneInfoProps) {
   const handleAddToCart = () => {
     console.log('Add to cart:', phone.name);
-    // TODO: Implement actual cart functionality
+    alert('Added to cart: ' + phone.name);
   };
 
   return (

@@ -4,7 +4,7 @@ export const appConfig = {
   isDevelopment: process.env.NODE_ENV === 'development',
   nodeEnv: process.env.NODE_ENV || 'development',
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
     credentials: true,
   },
 } as const;
