@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { usePhones } from '@/hooks/usePhones';
 import type { PhoneFilters } from '@/types/phone';
@@ -19,10 +19,15 @@ export function PhoneListPage() {
 
   const { data, isLoading, error, isFetching } = usePhones(filters);
 
-  const handleFiltersChange = (newFilters: Omit<PhoneFilters, 'page' | 'limit'>) => {
+  const handleFiltersChange = useCallback((
+    newFilters: Omit<PhoneFilters, 'page' | 'limit'>,
+    shouldResetPage: boolean = true
+  ) => {
     setFilterCriteria(newFilters);
-    setCurrentPage(1);
-  };
+    if (shouldResetPage) {
+      setCurrentPage(1);
+    }
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

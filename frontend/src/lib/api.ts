@@ -17,8 +17,6 @@ const apiRequest = async <T>(
 ): Promise<T> => {
   const url = `${API_BASE_URL}${endpoint}`;
 
-  console.log(`🚀 API Request: ${options?.method || 'GET'} ${url}`);
-
   try {
     const response = await fetch(url, {
       headers: {
@@ -38,7 +36,7 @@ const apiRequest = async <T>(
     return validatedData.data;
 
   } catch (error) {
-    console.error('❌ API Error:', error);
+    console.error('API Error:', error);
     throw error;
   }
 };

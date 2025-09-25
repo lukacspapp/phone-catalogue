@@ -1,3 +1,4 @@
+// src/components/pagination-component.tsx
 import {
   Pagination,
   PaginationContent,
@@ -6,7 +7,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@/components/ui/pagination';
+} from "@/components/ui/pagination";
 
 interface PaginationComponentProps {
   currentPage: number;
@@ -23,68 +24,51 @@ export function PaginationComponent({
   hasPrevious,
   onPageChange,
 }: PaginationComponentProps) {
-  const getPageNumbers = (): (number | 'ellipsis')[] => {
-    const pages: (number | 'ellipsis')[] = [];
+  const generatePageNumbers = () => {
+    const pages = [];
     const showEllipsis = totalPages > 7;
 
     if (!showEllipsis) {
+      // Show all pages if 7 or less
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      pages.push(1);
-
-      if (currentPage > 4) {
-        pages.push('ellipsis');
-      }
-
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
-
-      for (let i = start; i <= end; i++) {
-        pages.push(i);
-      }
-
-      if (currentPage < totalPages - 3) {
-        pages.push('ellipsis');
-      }
-
-      if (totalPages > 1) {
-        pages.push(totalPages);
+      // Show ellipsis logic
+      if (currentPage <= 4) {
+        pages.push(1, 2, 3, 4, 5, '...', totalPages);
+      } else if (currentPage >= totalPages - 3) {
+        pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
       }
     }
 
     return pages;
   };
 
-  return (
-    <div className="flex flex-col items-center space-y-4">
-      <div className="text-sm text-muted-foreground">
-        Page {currentPage} of {totalPages}
-      </div>
+  const pages = generatePageNumbers();
 
+  return (
+    <div className="flex justify-center mt-8">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
               onClick={() => hasPrevious && onPageChange(currentPage - 1)}
-              className={
-                !hasPrevious
-                  ? 'pointer-events-none opacity-50'
-                  : 'cursor-pointer hover:bg-accent'
-              }
+              className={!hasPrevious ? "pointer-events-none opacity-50" : "cursor-pointer"}
             />
           </PaginationItem>
 
-          {getPageNumbers().map((page, index) => (
+          {pages.map((page, index) => (
             <PaginationItem key={index}>
-              {page === 'ellipsis' ? (
+              {page === '...' ? (
                 <PaginationEllipsis />
               ) : (
                 <PaginationLink
-                  onClick={() => onPageChange(page)}
-                  isActive={page === currentPage}
-                  className="cursor-pointer hover:bg-accent"
+                  onClick={() => onPageChange(page as number)}
+                  isActive={currentPage === page}
+                  className="cursor-pointer"
                 >
                   {page}
                 </PaginationLink>
@@ -95,37 +79,11 @@ export function PaginationComponent({
           <PaginationItem>
             <PaginationNext
               onClick={() => hasNext && onPageChange(currentPage + 1)}
-              className={
-                !hasNext
-                  ? 'pointer-events-none opacity-50'
-                  : 'cursor-pointer hover:bg-accent'
-              }
+              className={!hasNext ? "pointer-events-none opacity-50" : "cursor-pointer"}
             />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-
-      {totalPages > 10 && (
-        <div className="flex items-center space-x-2 text-sm">
-          <span className="text-muted-foreground">Jump to page:</span>
-          <input
-            type="number"
-            min="1"
-            max={totalPages}
-            className="w-16 px-2 py-1 border rounded text-center bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                const page = parseInt((e.target as HTMLInputElement).value);
-                if (page >= 1 && page <= totalPages) {
-                  onPageChange(page);
-                  (e.target as HTMLInputElement).value = '';
-                }
-              }
-            }}
-            placeholder={currentPage.toString()}
-          />
-        </div>
-      )}
     </div>
   );
 }

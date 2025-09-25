@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const BRAND_OPTIONS = [
   'Apple', 'Samsung', 'Google', 'Xiaomi', 'Huawei', 'OnePlus',
-  'Honor', 'Asus', 'Sony', 'Motorola', 'Nokia', 'Oppo', 'Vivo', 'Realme',
+  'Honor', 'Asus', 'Sony', 'Motorola', 'Nokia', 'Oppo', 'Vivo', 'Realme', 'Nothing',
 ];
 
 interface BrandFilterProps {
