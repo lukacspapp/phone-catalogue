@@ -10,6 +10,11 @@
 git clone <your-repo-url>
 cd phone-catalogue
 
+# Copy environment templates for both backend and frontend
+
+cp backend/.env.template backend/.env.local
+cp frontend/.env.template frontend/.env.local
+
 # Start both backend and frontend
 
 docker compose up
